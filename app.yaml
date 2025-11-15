@@ -1,0 +1,73 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >
+  MyIacProject - Application Stack (EC2 + S3 + Apache)
+
+Parameters:
+  KeyPairName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: EC2 Key Pair name for SSH access
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub myiacproject-${AWS::AccountId}-${AWS::Region}
+      WebsiteConfiguration:
+        IndexDocument: index.html
+      Tags:
+        - Key: Name
+          Value: MyIacProject-S3
+
+  EC2Role:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ec2.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonS3FullAccess
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+      Tags:
+        - Key: Name
+          Value: MyIacProject-EC2Role
+
+  InstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Roles: 
+        - !Ref EC2Role
+
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t3.micro
+      ImageId: ami-0f34c5ae932e6f0e4 # Amazon Linux 2023 (us-east-1)
+      SubnetId: !ImportValue MyIacProject-PrivateSubnetId
+      SecurityGroupIds:
+        - !ImportValue MyIacProject-EC2SecurityGroupId
+      IamInstanceProfile: !Ref InstanceProfile
+      KeyName: !Ref KeyPairName
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          yum update -y
+          yum install -y httpd
+          systemctl start httpd
+          systemctl enable httpd
+          echo "<h1>MyIacProject - Apache via CloudFormation</h1>" > /var/www/html/index.html
+      Tags:
+        - Key: Name
+          Value: MyIacProject-EC2
+
+Outputs:
+  WebsiteBucket:
+    Description: S3 bucket name
+    Value: !Ref S3Bucket
+
+  EC2InstanceId:
+    Description: EC2 instance ID
+    Value: !Ref EC2Instance
