@@ -35,22 +35,32 @@ IAM Role + Instance Profile para acesso S3 e SSM
 
 A instância EC2 é acessada via AWS Systems Manager (SSM), sem exposição de portas públicas — prática recomendada de segurança.
 
-🧩 1. Infraestrutura (infra.yaml)
-▶️ 1.1. VPC Criada
-<!-- PRINT: VPC -->
-▶️ 1.2. Sub-redes (Pública e Privada)
-<!-- PRINT: Subredes -->
-▶️ 1.3. Tabelas de Rotas (Pública e Privada)
-<!-- PRINT: Tabelas de Rotas -->
-▶️ 1.4. NAT Gateway
-<!-- PRINT: NAT Gateway -->
-▶️ 1.5. Internet Gateway
-<!-- PRINT: IGW -->
-▶️ 1.6. Security Group
-<!-- PRINT: Security Group -->
-▶️ 1.7. Stack Infraestrutura (Status Create Complete)
-<!-- PRINT: Stack Infraestrutura -->
-🖥️ 2. Aplicação (app.yaml)
+**🧩 1. Infraestrutura (infra.yaml)**
+
+**▶️ 1.1. VPC Criada**
+<img src="https://github.com/cauafreirealves/MyIacProject/blob/main/VPC_Criada.jpeg">
+
+**▶️ 1.2. Sub-redes (Pública e Privada)**
+
+<img src="https://github.com/cauafreirealves/MyIacProject/blob/main/SubRedes.jpeg">
+
+**▶️ 1.3. Tabelas de Rotas (Pública e Privada)**
+
+<img src="https://github.com/cauafreirealves/MyIacProject/blob/main/TabelaDeRotasjpeg.jpg">
+
+**▶️ 1.4. NAT Gateway**
+<img src="https://github.com/cauafreirealves/MyIacProject/blob/main/Natgateway.jpg">
+
+**▶️ 1.5. Internet Gateway**
+<img src="">
+
+**▶️ 1.6. Security Group**
+<img src="https://github.com/cauafreirealves/MyIacProject/blob/main/GruposDeSeguran%C3%A7a.jpg">
+
+**▶️ 1.7. Stack Infraestrutura (Status Create Complete)**
+<img src="https://github.com/cauafreirealves/MyIacProject/blob/main/stack_Infra.jpg">
+
+**🖥️ 2. Aplicação (app.yaml)**
 
 A camada de aplicação cria:
 
@@ -70,12 +80,14 @@ Acesso ao S3
 
 Acesso SSM (sem SSH)
 
-▶️ 2.1. Buckets Criados
-<!-- PRINT: Buckets -->
-▶️ 2.2. Instância EC2 Criada (em Sub-rede Privada)
-<!-- PRINT: EC2 criada -->
-▶️ 2.3. Terminal da EC2 via SSM
+**▶️ 2.1. Buckets Criados**
+<img src="https://github.com/cauafreirealves/MyIacProject/blob/main/BucketsCriados.jpg">
 
+**▶️ 2.2. Instância EC2 Criada (em Sub-rede Privada)**
+<img src="https://github.com/cauafreirealves/MyIacProject/blob/main/InstanciaCriada.jpg">
+
+**▶️ 2.3. Terminal da EC2 via SSM**
+<img src="https://github.com/cauafreirealves/MyIacProject/blob/main/terminal.jpg">
 Aqui validei:
 
 Apache rodando
@@ -86,9 +98,10 @@ Conectividade via NAT
 
 Retorno da página HTML
 
+
 <!-- PRINT: Terminal EC2 / curl localhost -->
-▶️ 2.4. Stack App (Create Complete)
-<!-- PRINT: Stack App -->
+**▶️ 2.4. Stack App (Create Complete)**
+<img src="https://github.com/cauafreirealves/MyIacProject/blob/main/Stack_App.jpg">
 📄 3. Templates do Projeto
 
 Os templates YAML utilizados estão neste repositório:
@@ -127,22 +140,10 @@ O bucket S3 também é provisionado para servir conteúdo estático
 ✔️ Criação de aplicação via CloudFormation
 ✔️ Arquitetura limpa e reutilizável
 
-🎯 6. Próximos Passos
 
-Adicionar Load Balancer
 
-Criar versão desse projeto usando Terraform
-
-Criar pipeline CI/CD com CodePipeline
-
-Integrar com RDS ou DynamoDB
-
-Adicionar monitoramento com CloudWatch
-
-📬 Contato
-
-Se quiser trocar ideia sobre AWS, projetos ou carreira:
+📬 Contato:
 
 Cauã Freire
-📧 [seu email]
-🔗 LinkedIn: [seu link]
+📧 [cauafreirealves1@gmail.com]
+🔗 LinkedIn: [www.linkedin.com/in/cauafreirealves]
