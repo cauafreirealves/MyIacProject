@@ -52,7 +52,7 @@ A instância EC2 é acessada via AWS Systems Manager (SSM), sem exposição de p
 <img src="https://github.com/cauafreirealves/MyIacProject/blob/main/Natgateway.jpg">
 
 **▶️ 1.5. Internet Gateway**
-<img src="">
+<img src="https://github.com/cauafreirealves/MyIacProject/blob/main/InternetGateway.jpg">
 
 **▶️ 1.6. Security Group**
 <img src="https://github.com/cauafreirealves/MyIacProject/blob/main/GruposDeSeguran%C3%A7a.jpg">
