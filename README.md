@@ -106,9 +106,9 @@ Retorno da página HTML
 
 Os templates YAML utilizados estão neste repositório:
 
-infra.yaml
+[infra.yaml](https://github.com/cauafreirealves/MyIacProject/blob/main/Network.yaml)
 
-app.yaml
+[app.yaml](https://github.com/cauafreirealves/MyIacProject/blob/main/app.yaml)
 
 Eles podem ser reutilizados e adaptados para diferentes cenários.
 
